@@ -1,6 +1,6 @@
-payer_name,payer_id
-Medicaid,0
-UnitedHealthcare,1
-Aetna,2
-Cigna,3
-Blue Cross,4
+payer_id,payer_name
+0,Medicaid
+1,UnitedHealthcare
+2,Aetna
+3,Cigna
+4,Blue Cross
