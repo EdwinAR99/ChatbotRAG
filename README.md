@@ -104,16 +104,16 @@ hospital_neo4j_etl/
 ### Base de Datos
 Las bases de datos de gráficos, como Neo4j, son bases de datos diseñadas para representar y procesar datos almacenados como un gráfico. Los datos del gráfico constan de nodos, aristas o relaciones y propiedades. Los nodos representan entidades, las relaciones conectan entidades y las propiedades proporcionan metadatos adicionales sobre nodos y relaciones. Por ejemplo, Paciente y Visita están conectados por la relación HAS, lo que indica que un paciente del hospital tiene una visita. De manera similar, Visita y Pagador están conectados por la relación COVERED_BY, lo que indica que un pagador de seguro cubre una visita al hospital.
 
-![Diseño de base de datos en grafos](readme_images/graph.png)
+![Diseño de base de datos en grafos](https://github.com/EdwinAR99/ChatbotRAG/blob/images/readme_images/graph.png)
 
 Este diagrama muestra todos los nodos y relaciones en los datos del sistema hospitalario. Una forma útil de pensar en este diagrama de flujo es comenzar con el nodo Paciente y seguir las relaciones. Un paciente tiene una visita en un hospital y el hospital contrata a un médico para tratar la visita que está cubierta por un pagador de seguro.
 Aquí están las propiedades almacenadas en cada nodo:
 
-![Propiedades de los nodos](readme_images/properties.png)
+![Propiedades de los nodos](https://github.com/EdwinAR99/ChatbotRAG/blob/images/properties.png)
 
 Ademas estas son las propiedades de relaciónes:
 
-![Propiedades de las relaciones](readme_images/relations.png)
+![Propiedades de las relaciones](https://github.com/EdwinAR99/ChatbotRAG/blob/images/relations.png)
 
 ## Directorio chatbot_api/
 
