@@ -1,8 +1,9 @@
 import os
-from langchain_community.graphs import Neo4jGraph
+
 from langchain.chains import GraphCypherQAChain
-from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
+from langchain_community.graphs import Neo4jGraph
+from langchain_openai import ChatOpenAI
 
 HOSPITAL_QA_MODEL = os.getenv("HOSPITAL_QA_MODEL")
 HOSPITAL_CYPHER_MODEL = os.getenv("HOSPITAL_CYPHER_MODEL")
@@ -71,9 +72,9 @@ ORDER BY percent_increase DESC
 LIMIT 1
 
 # How many non-emergency patients in North Carolina have written reviews?
-MATCH (r:Review)<-[:WRITES]-(v:Visit)-[:AT]->(h:Hospital)
-WHERE h.state_name = 'NC' and v.admission_type <> 'Emergency'
-RETURN count(*)
+match (r:Review)<-[:WRITES]-(v:Visit)-[:AT]->(h:Hospital)
+where h.state_name = 'NC' and v.admission_type <> 'Emergency'
+return count(*)
 
 String category values:
 Test results are one of: 'Inconclusive', 'Normal', 'Abnormal'
@@ -87,7 +88,7 @@ missing.
 Use abbreviations when
 filtering on hospital states (e.g. "Texas" is "TX",
 "Colorado" is "CO", "North Carolina" is "NC",
-"Florida" is "FL", "Georgia" is "GA", etc.)
+"Florida" is "FL", "Georgia" is "GA, etc.)
 
 Make sure to use IS NULL or IS NOT NULL when analyzing missing properties.
 Never return embedding properties in your queries. You must never include the
@@ -108,7 +109,7 @@ cypher_generation_prompt = PromptTemplate(
 qa_generation_template = """You are an assistant that takes the results
 from a Neo4j Cypher query and forms a human-readable response. The
 query results section contains the results of a Cypher query that was
-generated based on a user's natural language question. The provided
+generated based on a users natural language question. The provided
 information is authoritative, you must never doubt it or try to use
 your internal knowledge to correct it. Make the answer sound like a
 response to the question.
@@ -134,7 +135,8 @@ a way that isn't ambiguous and allows someone to tell what the full
 names are.
 
 Never say you don't have the right information if there is data in
-the query results. Always use the data in the query results.
+the query results. Make sure to show all the relevant query results
+if you're asked.
 
 Helpful Answer:
 """
