@@ -247,6 +247,10 @@ python -m pip install chatbot_api/
 ```
 Automaticamente se instalaran las librerias que utilizan los scripts, ahora para probar el bot, puede crear un archivo .py o bien, desde el interprete de python.
 * Creando un archivo .py
+Primero se debe instalar la librera de `python-dotenv` para poder cargar las variables de entorno, ejecute el siguiente comando:\
+```
+pip install python-dotenv
+```
 Es posible crear un archivo con la logica para ejecutar el agente o chatbot, para ello debe asegurarse de crearlo en la carpeta raiz, puede usar el siguiente script para probar el bot.
 
 <!DOCTYPE html>
@@ -313,9 +317,9 @@ response = hospital_rag_agent_executor.invoke({"input": "Muéstrame reseñas esc
 
 > Entering new AgentExecutor chain...
 
-Invoking: `Experiences` with `Muéstrame reseñas escritas por el paciente 7674.`
+Invoking: `Experiences` with `Show me reviews written by patient 7674.`
 
-{'query': 'Muéstrame reseñas escritas por el paciente 7674.', 'result': 'Lo lamento, pero no hay reseñas proporcionadas por un paciente con el identificador "7674" en el contexto dado. Si tienes alguna otra pregunta o necesitas información sobre las reseñas proporcionadas, no dude en preguntar.'}Lo lamento, pero no hay reseñas proporcionadas por un paciente con el identificador "7674" en el contexto dado. Si tienes alguna otra pregunta o necesitas información sobre las reseñas proporcionadas, no dude en preguntar.
+{'query': 'Show me reviews written by patient 7674.', 'result': 'I\'m sorry, but there are no reviews provided by a patient with the identifier "7674" in the context given. If you have any other questions or need information about the reviews provided, feel free to ask.'}Lo lamento, pero no hay reseñas proporcionadas por un paciente con el identificador "7674" en el contexto dado. Si tienes alguna otra pregunta o necesitas información sobre las reseñas proporcionadas, no dude en preguntar.
 
 > Finished chain.
 ```

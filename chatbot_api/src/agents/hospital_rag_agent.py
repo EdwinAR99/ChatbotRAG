@@ -9,10 +9,17 @@ from tools.wait_times import (
     get_current_wait_times,
     get_most_available_hospital,
 )
+from langchain.memory import ConversationBufferMemory
 
 HOSPITAL_AGENT_MODEL = os.getenv("HOSPITAL_AGENT_MODEL")
 
 hospital_agent_prompt = hub.pull("hwchase17/openai-functions-agent")
+
+memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+
+# Herramienta adicional para manejar consultas fuera de contexto
+def default_resp(question):
+    return """La pregunta no está relacionada con el contexto hospitalario. Por favor, haz preguntas específicas sobre el sistema de hospitales, pacientes, etc."""
 
 tools = [
     Tool(
@@ -61,6 +68,12 @@ tools = [
         hospital name as the key and the wait time in minutes as the value.
         """,
     ),
+    Tool(
+        name="Default",
+        func=default_resp,
+        description="""Use it when the question is not related to the hospital context."""
+
+    ),
 ]
 
 chat_model = ChatOpenAI(
@@ -77,6 +90,7 @@ hospital_rag_agent = create_openai_functions_agent(
 hospital_rag_agent_executor = AgentExecutor(
     agent=hospital_rag_agent,
     tools=tools,
-    return_intermediate_steps=True,
+    memory=memory,
+    #return_intermediate_steps=True,
     verbose=True,
 )

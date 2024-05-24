@@ -2,11 +2,12 @@ import os
 from typing import Any
 
 import numpy as np
+import random as rand
 from langchain_community.graphs import Neo4jGraph
 
 
 def _get_current_hospitals() -> list[str]:
-    """Fetch a list of current hospital names from a Neo4j database."""
+    # Obtiene una lista de nombres de hospitales actuales de una base de datos Neo4j.
     graph = Neo4jGraph(
         url=os.getenv("NEO4J_URI"),
         username=os.getenv("NEO4J_USERNAME"),
@@ -26,18 +27,19 @@ def _get_current_hospitals() -> list[str]:
 
 
 def _get_current_wait_time_minutes(hospital: str) -> int:
-    """Get the current wait time at a hospital in minutes."""
+    # Obtiene el tiempo de espera actual en un hospital en minutos.
 
     current_hospitals = _get_current_hospitals()
 
     if hospital.lower() not in current_hospitals:
         return -1
 
-    return np.random.randint(low=0, high=600)
+    #return np.random.randint(low=0, high=600)
+    return rand.expovariate(3600)
 
 
 def get_current_wait_times(hospital: str) -> str:
-    """Get the current wait time at a hospital formatted as a string."""
+    # Obtiene el tiempo de espera actual en un hospital con formato de cadena.
 
     wait_time_in_minutes = _get_current_wait_time_minutes(hospital)
 
@@ -55,7 +57,7 @@ def get_current_wait_times(hospital: str) -> str:
 
 
 def get_most_available_hospital(_: Any) -> dict[str, float]:
-    """Find the hospital with the shortest wait time."""
+    # Encuentra el hospital con el menor tiempo de espera.
 
     current_hospitals = _get_current_hospitals()
 
