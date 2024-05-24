@@ -109,11 +109,11 @@ Las bases de datos de gráficos, como Neo4j, son bases de datos diseñadas para 
 Este diagrama muestra todos los nodos y relaciones en los datos del sistema hospitalario. Una forma útil de pensar en este diagrama de flujo es comenzar con el nodo Paciente y seguir las relaciones. Un paciente tiene una visita en un hospital y el hospital contrata a un médico para tratar la visita que está cubierta por un pagador de seguro.
 Aquí están las propiedades almacenadas en cada nodo:
 
-![Propiedades de los nodos](https://github.com/EdwinAR99/ChatbotRAG/blob/images/properties.png)
+![Propiedades de los nodos](https://github.com/EdwinAR99/ChatbotRAG/blob/images/readme_images/properties.png)
 
 Ademas estas son las propiedades de relaciónes:
 
-![Propiedades de las relaciones](https://github.com/EdwinAR99/ChatbotRAG/blob/images/relations.png)
+![Propiedades de las relaciones](https://github.com/EdwinAR99/ChatbotRAG/blob/images/readme_images/relations.png)
 
 ## Directorio chatbot_api/
 
