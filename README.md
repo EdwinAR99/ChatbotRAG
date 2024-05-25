@@ -24,6 +24,7 @@ Como se menciono antes, todos los registros estan guardados en archivos CSV, En 
     En [`hospitals.csv`](https://github.com/EdwinAR99/ChatbotRAG/blob/master/data/hospitals.csv) se registro información de cada hospital. Hay 30 hospitales y tres columnas en este archivo.
 
     * _hospital_id_: ID única de un hospital.
+    * _hospital_name_: El nombre del hospital.
     * _hospital_state_: Estado en el que se encuentra el hospital.
 
     Por ejemplo, que el hospital Walton, LLC tiene un ID de 2 y está ubicado en el estado de Florida, FL.
@@ -318,7 +319,21 @@ Con esto habra terminado de montar el bot en su repositorio local.
 
 ## Conclusiones
 
+* Este proyecto es solo el comienzo de lo que puede ofrecer LangChain. En el futuro, esperamo expandir las capacidades del chatbot, mejorar su capacidad de comprensión del lenguaje natural y explorar formas de personalizar aún más las interacciones con los usuarios.
+* Si bien nuestros datos pueden ser sintéticos, el impacto del trabajo es muy real. Estos datos permiten desarrollar y probar el chatbot de manera efectiva, sentando las bases para futuras aplicaciones en entornos del mundo real.
+* Se observa un mejor rendimiento cuando se contextualiza en inglés en lugar de español. Esto puede atribuirse a varios factores, como la disponibilidad de datos y modelos de lenguaje entrenados en inglés, lo que permite al bot comprender y generar respuestas más precisas y naturales en este idioma. Además, la mayoría de las tecnologías de procesamiento de lenguaje natural están más desarrolladas para el inglés, lo que puede influir en la calidad y coherencia de las respuestas proporcionadas por el bot.
+
 ## Referencias
+
+1. ChatGPT. "Conversación con ChatGPT". OpenAI, 2024.
+2. LangChain, "Documentación de LangChain", LangChain Project, 2023.
+3. Neo4j, "Documentación de Neo4j", Neo4j Inc., 2022.
+4. Harpreet Sahota, "Memory in LangChain: A Deep Dive into Persistent Context", [comet](https://www.comet.com/), 11 de noviembre de 2023.
+5. Shishir Singh, "Langchain Applications — Part 1 — LLM Models", [medium](https://medium.com/), 18 de junio de 2023.
+6. Shishir Singh, "Langchain Applications — Part 2 — ChatModels", [medium](https://medium.com/), 18 de junio de 2023.
+7. Shishir Singh, "Langchain Applications — Part 3 — Embedding Models", [medium](https://medium.com/), 18 de junio de 2023.
+8. Shishir Singh, "Langchain Applications — Part 4 — PromptValues and PromptTemplates", [medium](https://medium.com/), 18 de junio de 2023.
+9. Shishir Singh, "Langchain Applications — Part 5 — Example Selectors & Output Parsers", [medium](https://medium.com/), 18 de junio de 2023.
 
 ## Trabajos futuros
 Este repositorio puede ser usado de forma libre, una posibilidad a futuro es implementar el bot en un APIREST para consumir desde un frontend funcional, y simular un chat con un usuario real.
