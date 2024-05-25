@@ -257,18 +257,24 @@ pip install python-dotenv
 ```
 Es posible crear un archivo con la logica para ejecutar el agente o chatbot, para ello debe asegurarse de crearlo en la carpeta raiz, puede usar el siguiente script para probar el bot.
 ```
-<span style="color: #007acc; font-weight: bold;">import</span> dotenv
-dotenv.<span style="color: #795548;">load_dotenv</span>()
+import dotenv
+dotenv.load_dotenv()
 
-<span style="color: #007acc; font-weight: bold;">from</span> chatbot_api.src.agents.hospital_rag_agent <span style="color: #007acc; font-weight: bold;">import</span> hospital_rag_agent_executor
+from chatbot_api.src.agents.hospital_rag_agent import hospital_rag_agent_executor, memory
 
-<span style="color: #007acc; font-weight: bold;">while</span> <span style="color: #007acc; font-weight: bold;">True</span>:
-    <span style="margin-left: 20px;">input_text = <span style="color: #795548;">input</span>(<span style="color: #d32f2f;">"Introduce tu pregunta (o escribe 'salir' para terminar): "</span>)</span>
-    <span style="margin-left: 20px;"><span style="color: #007acc; font-weight: bold;">if</span> input_text.lower() == <span style="color: #d32f2f;">'salir'</span>:</span>
-        <span style="margin-left: 20px;"><span style="margin-left: 20px;"><span style="color: #795548;">print</span>(<span style="color: #d32f2f;">"Saliendo del programa."</span>)</span></span>
-        <span style="margin-left: 20px;"><span style="margin-left: 20px;"><span style="color: #007acc; font-weight: bold;">break</span></span></span>
-    <span style="margin-left: 20px;">response = hospital_rag_agent_executor.<span style="color: #795548;">invoke</span>({<span style="color: #d32f2f;">"input"</span>: input_text})</span>
-    <span style="margin-left: 20px;"><span style="color: #795548;">print</span>(response.<span style="color: #795548;">get</span>(<span style="color: #d32f2f;">"output"</span>))</span>
+chat_history = memory.buffer_as_messages
+
+hospital_rag_agent_executor.invoke({"input": "Hola, dime cual es tu funcion, y siempre debes darme todas tus respuestas en español"})
+
+while True:
+    input_text = input("Introduce tu pregunta (o escribe 'salir' para terminar): \n")
+    if input_text.lower() == 'salir':
+        print("Saliendo del programa.")
+        break
+    
+    response = hospital_rag_agent_executor.invoke({"input": input_text})
+    print(response.get("output"))
+
 ```
 
 De esta forma puede simular la conversacion con el bot.
