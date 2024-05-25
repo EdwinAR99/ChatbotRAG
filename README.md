@@ -1,5 +1,9 @@
 # RAG CHATBOT
 
+**AUTOR:** Jesus Edwin Adrada Ruiz
+
+**Proyecto final para TALENTO TECH COHORTE 1 - 2024**
+
 ## Descripcion
 
 En este proyecto se desarrollo un chatbot RAG en LangChain que utiliza Neo4j para recuperar datos sobre los pacientes, las reseñas de los pacientes, las ubicaciones de los hospitales, las visitas, las compañías de seguros y los médicos del sistema hospitalario.
@@ -252,46 +256,20 @@ Primero se debe instalar la librera de `python-dotenv` para poder cargar las var
 pip install python-dotenv
 ```
 Es posible crear un archivo con la logica para ejecutar el agente o chatbot, para ello debe asegurarse de crearlo en la carpeta raiz, puede usar el siguiente script para probar el bot.
+```
+<span style="color: #007acc; font-weight: bold;">import</span> dotenv
+dotenv.<span style="color: #795548;">load_dotenv</span>()
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Custom Code Highlighting</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        pre {
-            padding: 10px;
-            border-radius: 5px;
-            overflow: auto;
-            white-space: pre-wrap; /* Permite el ajuste de línea automático */
-        }
-        .keyword { color: #007acc; font-weight: bold; }
-        .function { color: #795548; }
-        .string { color: #d32f2f; }
-        .comment { color: #757575; font-style: italic; }
-        .indent { margin-left: 20px; }
-    </style>
-</head>
-<body>
-<pre><code class="python">
-<span class="keyword">import</span> dotenv
-dotenv.<span class="function">load_dotenv</span>()
+<span style="color: #007acc; font-weight: bold;">from</span> chatbot_api.src.agents.hospital_rag_agent <span style="color: #007acc; font-weight: bold;">import</span> hospital_rag_agent_executor
 
-<span class="keyword">from</span> chatbot_api.src.agents.hospital_rag_agent <span class="keyword">import</span> hospital_rag_agent_executor
-
-<span class="keyword">while</span> <span class="keyword">True</span>:
-    <span class="indent">input_text = <span class="function">input</span>(<span class="string">"Introduce tu pregunta (o escribe 'salir' para terminar): "</span>)</span>
-    <span class="indent"><span class="keyword">if</span> input_text.lower() == <span class="string">'salir'</span>:</span>
-        <span class="indent"><span class="indent"><span class="function">print</span>(<span class="string">"Saliendo del programa."</span>)</span></span>
-        <span class="indent"><span class="indent"><span class="keyword">break</span></span></span>
-    <span class="indent">response = hospital_rag_agent_executor.<span class="function">invoke</span>({<span class="string">"input"</span>: input_text})</span>
-    <span class="indent"><span class="function">print</span>(response.<span class="function">get</span>(<span class="string">"output"</span>))</span>
-</code></pre>
-</body>
-</html>
+<span style="color: #007acc; font-weight: bold;">while</span> <span style="color: #007acc; font-weight: bold;">True</span>:
+    <span style="margin-left: 20px;">input_text = <span style="color: #795548;">input</span>(<span style="color: #d32f2f;">"Introduce tu pregunta (o escribe 'salir' para terminar): "</span>)</span>
+    <span style="margin-left: 20px;"><span style="color: #007acc; font-weight: bold;">if</span> input_text.lower() == <span style="color: #d32f2f;">'salir'</span>:</span>
+        <span style="margin-left: 20px;"><span style="margin-left: 20px;"><span style="color: #795548;">print</span>(<span style="color: #d32f2f;">"Saliendo del programa."</span>)</span></span>
+        <span style="margin-left: 20px;"><span style="margin-left: 20px;"><span style="color: #007acc; font-weight: bold;">break</span></span></span>
+    <span style="margin-left: 20px;">response = hospital_rag_agent_executor.<span style="color: #795548;">invoke</span>({<span style="color: #d32f2f;">"input"</span>: input_text})</span>
+    <span style="margin-left: 20px;"><span style="color: #795548;">print</span>(response.<span style="color: #795548;">get</span>(<span style="color: #d32f2f;">"output"</span>))</span>
+```
 
 De esta forma puede simular la conversacion con el bot.
 
@@ -331,6 +309,10 @@ response.get("output")
 ```
 
 Con esto habra terminado de montar el bot en su repositorio local.
+
+## Conclusiones
+
+## Referencias
 
 ## Trabajos futuros
 Este repositorio puede ser usado de forma libre, una posibilidad a futuro es implementar el bot en un APIREST para consumir desde un frontend funcional, y simular un chat con un usuario real.

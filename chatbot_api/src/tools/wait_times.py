@@ -35,7 +35,7 @@ def _get_current_wait_time_minutes(hospital: str) -> int:
         return -1
 
     #return np.random.randint(low=0, high=600)
-    return rand.expovariate(3600)
+    return rand.expovariate(1/7200)
 
 
 def get_current_wait_times(hospital: str) -> str:
